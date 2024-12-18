@@ -292,7 +292,12 @@ class WikiWTitle extends GenericObject {
 				PhpTagsRuntime::pushException( new PhpTagsHookException( 'The PageImages extension is not installed' ) );
 				return null;
 			}
-			$file = PageImages::getPageImage( $title );
+			$services = MediaWikiServices::getInstance();
+			if ( $services->hasService( 'PageImages.PageImages' ) ) {
+				$file = $services->getService( 'PageImages.PageImages' )->getImage( $title );
+			} else {
+				$file = PageImages::getPageImage( $title );
+			}
 			if ( !$file ) {
 				return null;
 			}
