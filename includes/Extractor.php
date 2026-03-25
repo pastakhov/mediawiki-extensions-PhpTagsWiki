@@ -4,6 +4,7 @@ namespace PhpTagsWiki;
 use ConfigException;
 use Exception;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MWDebug;
 use ParserOptions;
 use TextExtracts\ExtractFormatter;
